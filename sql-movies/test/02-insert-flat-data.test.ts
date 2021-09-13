@@ -24,29 +24,46 @@ import { minutes } from "./utils";
 
 const insertActors = (actors: string[]) => {
   return (
-    `insert into actors (full_name) values` +
+    `insert into ${ACTORS} (full_name) values ` +
     actors.map(actor => `('${escape(actor)}')`).join(",")
   );
 };
 
 const insertKeywords = (keywords: string[]) => {
-  throw new Error(`todo`);
+  return (
+    `insert into ${KEYWORDS} (keyword) values` +
+    keywords.map(keyword => `('${escape(keyword)}')`).join(",")
+  );
 };
 
 const insertDirectors = (directors: string[]) => {
-  throw new Error(`todo`);
+  return (
+    `insert into ${DIRECTORS} (full_name) values` +
+    directors.map(director => `('${escape(director)}')`).join(",")
+  );
 };
 
 const insertGenres = (genres: string[]) => {
-  throw new Error(`todo`);
+  return (
+    `insert into ${GENRES} (genre) values` +
+    genres.map(genre => `('${escape(genre)}')`).join(",")
+  );
 };
 
 const insertProductionCompanies = (companies: string[]) => {
-  throw new Error(`todo`);
+  return (
+    `insert into ${PRODUCTION_COMPANIES} (company_name) values` +
+    companies.map(company_name => `('${escape(company_name)}')`).join(",")
+  );
 };
 
 const insertMovies = (movies: Movie[]) => {
-  throw new Error(`todo`);
+  return (
+    `insert into ${MOVIES} (imdb_id, popularity, budget, budget_adjusted, revenue, revenue_adjusted, original_title, homepage, tagline, overview, runtime, release_date) values` +
+    movies.map(movie => `('${escape(movie.imdbId)}', ${movie.popularity}, ${movie.budget}, ${movie.budgetAdjusted}, ${movie.revenue}, ${movie.revenueAdjusted}, 
+    '${escape(movie.originalTitle)}', '${escape(movie.homepage)}', '${movie.tagline?escape(movie.tagline):null}', '${escape(movie.overview)}', ${movie.runtime}, 
+    '${escape(movie.releaseDate)}')`).join(",")
+  );
 };
 
 describe("Insert Flat Data", () => {
