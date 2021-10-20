@@ -13,30 +13,40 @@ import { minutes, Log } from "./utils";
 const CREATE_MOVIE_GENRES_TABLE =  `create table ${MOVIE_GENRES}(
   movie_id integer not null,
   genre_id integer not null,
+  foreign key(movie_id) references movies(id),
+  foreign key(genre_id) references genres(id),
   Primary Key(movie_id, genre_id)
 )`;
 
 const CREATE_MOVIE_ACTORS_TABLE = `create table ${MOVIE_ACTORS}(
   movie_id integer not null,
   actor_id integer not null,
+  foreign key(movie_id) references movies(id),
+  foreign key(actor_id) references actors(id),
   Primary Key(movie_id, actor_id)
 )`;
 
 const CREATE_MOVIE_DIRECTORS_TABLE = `create table ${MOVIE_DIRECTORS}(
   movie_id integer not null,
   director_id integer not null,
+  foreign key(movie_id) references movies(id),
+  foreign key(director_id) references directors(id),
   Primary Key(movie_id, director_id)
 )`;
 
 const CREATE_MOVIE_KEYWORDS_TABLE = `create table ${MOVIE_KEYWORDS}(
   movie_id integer not null,
   keyword_id integer not null,
+  foreign key(movie_id) references movies(id),
+  foreign key(keyword_id) references keywords(id),
   Primary Key(movie_id, keyword_id)
 )`;
 
 const CREATE_MOVIE_PRODUCTION_COMPANIES_TABLE = `create table ${MOVIE_PRODUCTION_COMPANIES}(
   movie_id integer not null,
   company_id integer not null,
+  foreign key(movie_id) references movies(id),
+  foreign key(company_id) references production_companies(id),
   Primary Key(movie_id, company_id)
 )`;
 
